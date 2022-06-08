@@ -1,0 +1,37 @@
+{
+  "name": "pico-8-typescript",
+  "version": "0.1.0",
+  "description": "A workflow to create PICO-8 games with TypeScript.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "patch-package",
+    "buildBin": "tsc --outDir bin src/tscpico8.ts",
+    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write"
+  },
+  "keywords": [
+    "pico-8",
+    "typescript",
+    "transpile",
+    "lua",
+    "transpiler"
+  ],
+  "author": "Travis Whitton",
+  "license": "MIT",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "chokidar": "^3.5.3",
+    "commander": "^9.3.0",
+    "fs-extra": "^10.1.0",
+    "jspicl-cli": "^0.4.0",
+    "patch-package": "^6.4.7",
+    "strip-json-comments": "^4.0.0",
+    "typescript": "^4.7.3",
+    "uglify-js": "^3.16.0",
+    "yesno": "^0.3.1"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "prettier": "^2.6.2"
+  }
+}

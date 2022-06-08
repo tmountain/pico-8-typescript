@@ -1,0 +1,11 @@
+diff --git a/node_modules/jspicl-cli/package.json b/node_modules/jspicl-cli/package.json
+index 227b4f4..6672686 100644
+--- a/node_modules/jspicl-cli/package.json
++++ b/node_modules/jspicl-cli/package.json
+@@ -77,6 +79,5 @@
+     "start": "rollup -c",
+     "test": "NODE_ENV=test NODE_PATH=src mocha"
+   },
+-  "type": "module",
+   "version": "0.4.0"
+ }
