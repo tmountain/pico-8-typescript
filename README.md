@@ -1,10 +1,10 @@
-# TSC-PICO-8 - TypeScript for PICO-8
+# TS-PICO-8 - TypeScript for PICO-8
 
 ![](pico8.png)
 
 Create [PICO-8](https://www.lexaloffle.com/pico-8.php) games in TypeScript!
 
-TSC-PICO-8 contains all the function declarations (`.d.ts`) for the PICO-8 API
+TS-PICO-8 contains all the function declarations (`.d.ts`) for the PICO-8 API
 and will compile your TypeScript code to Lua and inject it into your PICO-8 cart.
 
 Compression and mangling options are configurable to optimize for token usage, and
@@ -23,20 +23,22 @@ using a typed language with PICO-8.
 
 ### Prerequisites
 
-1. Install a recent version of NodeJS
-2. Clone this repository to your local machine
-3. Install dependencies `npm install`
+1. Install a recent version of PICO-8
+2. Install a recent version of NodeJS
+3. Clone this repository to your local machine
+4. Install dependencies `npm install`
 
 ### Create a PICO-8 project
 
 1. Run `bin/tspico8 init` to generate the default workspace `p8workspace`.
-2. Optionally configure `p8workspace/tspico8.json` to specify compression, mangling, and pico-8 location.
+2. Optionally configure `p8workspace/tspico8.json` to specify compression, mangling, and pico-8 location. Note: tspico8 will attempt to detect the pico-8 location automatically.
 3. Run `bin/tspico8 run` to watch for changes inside of `p8workspace` and recompile/relaunch when detected.
 
 ### Configuration (tspico8.json)
 
 ```
 {
+  // Set this if tspico8 can't find your pico-8 install automatically
   "pico8": {
     "executable": "path/to/pico8/executable/file"
   },
@@ -74,9 +76,9 @@ Lua is accomplished as follows.
 
 1. A file watcher (chokidar) watches `p8workspace` for any changes to `*.ts` or `spritesheet.png`.
 2. When a change is detected, `tsc` is invoked and the resulting JavaScript dumps to `p8workspace/build/compiled.js`.
-3. A second file watcher (chokidar) detecs a change to `compiled.js` and runs uglify with the params
-provided in `tspico8.json` to produce a compressed JavaScript file `p8workspace/build/compressed.js`.
-4. The compressed JavaScript file is then fed to a PICO-8 specific JavaScript to Lua compiler (jspicl-cli) that does something very close to a one to translation and assembles the final cart.
+3. The `compiled.js` is fed into uglify with the params provided in `tspico8.json`
+ to produce a compressed JavaScript file `p8workspace/build/compressed.js`.
+4. The compressed JavaScript file is then fed to a PICO-8 specific JavaScript to Lua compiler (jspicl-cli) that does something very close to a one-to-one translation and assembles the final cart.
 
 The PICO-8 Lua interpreter is somewhat limited compared to modern Lua, so there are a lot of
 scenarios where unexpected output from any stage of this process can break your cart.
