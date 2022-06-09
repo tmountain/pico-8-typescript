@@ -1,0 +1,25 @@
+{
+  "pico8": {
+    "executable": "path/to/pico8/executable/file"
+  },
+  "compression": {
+    "compressedFile": "build/compressed.js",
+    "indentLevel": 1,
+    "compress": false,
+    "mangle": false
+  },
+  "mangleOptions": {
+    "toplevel": true,
+    "reserved": ["_init", "_update", "_draw"]
+  },
+  "compressOptions": {
+    "dead_code": true,
+    "conditionals": false,
+    "comparisons": true,
+    "evaluate": true,
+    "booleans": true,
+    "loops": true,
+    "unused": true,
+    "join_vars": true
+  }
+}

@@ -2,11 +2,12 @@
   "name": "pico-8-typescript",
   "version": "0.1.0",
   "description": "A workflow to create PICO-8 games with TypeScript.",
-  "main": "dist/index.js",
+  "bin": {
+    "tspico8": "./bin/tspico8.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "patch-package",
-    "buildBin": "tsc --outDir bin src/tscpico8.ts",
+    "build-bin": "tsc --outDir bin src/tspico8.ts",
     "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write"
   },
   "keywords": [
