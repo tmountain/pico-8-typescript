@@ -27,6 +27,7 @@ using a typed language with PICO-8.
 2. Install a recent version of NodeJS
 3. Clone this repository to your local machine
 4. Install dependencies `npm install`
+5. Make sure "$PWD/node_modules/.bin/" is in your $PATH.
 
 ### Create a PICO-8 project
 
