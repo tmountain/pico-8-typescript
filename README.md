@@ -31,9 +31,9 @@ using a typed language with PICO-8.
 
 ### Create a PICO-8 project
 
-1. Run `bin/tspico8.js init` to generate the default workspace `p8workspace`.
+1. Run `bin/tspico8.js init -d mycart` to generate the default workspace.
 2. Optionally configure `p8workspace/tspico8.json` to specify compression, mangling, and pico-8 location. Note: tspico8 will attempt to detect the pico-8 location automatically.
-3. Run `bin/tspico8.js run` to watch for changes inside of `p8workspace` and recompile/relaunch when detected.
+3. Run `bin/tspico8.js run -d mycart` to watch for changes inside of `mycart` and recompile/relaunch when detected.
 
 ### Configuration (tspico8.json)
 
@@ -75,10 +75,10 @@ using a typed language with PICO-8.
 This project is basically a [Rube Goldberg machine](https://en.wikipedia.org/wiki/Rube_Goldberg_machine), and the build process is very brittle. Getting from TypeScript to
 Lua is accomplished as follows.
 
-1. A file watcher (chokidar) watches `p8workspace` for any changes to `*.ts` or `spritesheet.png`.
-2. When a change is detected, `tsc` is invoked and the resulting JavaScript dumps to `p8workspace/build/compiled.js`.
+1. A file watcher (chokidar) watches `mycart` for any changes to `*.ts` or `spritesheet.png`.
+2. When a change is detected, `tsc` is invoked and the resulting JavaScript dumps to `mycart/build/compiled.js`.
 3. The `compiled.js` is fed into uglify with the params provided in `tspico8.json`
- to produce a compressed JavaScript file `p8workspace/build/compressed.js`.
+ to produce a compressed JavaScript file `mycart/build/compressed.js`.
 4. The compressed JavaScript file is then fed to a PICO-8 specific JavaScript to Lua compiler (jspicl-cli) that does something very close to a one-to-one translation and assembles the final cart.
 
 The PICO-8 Lua interpreter is somewhat limited compared to modern Lua, so there are a lot of
@@ -92,24 +92,26 @@ USE THEM AT YOUR OWN RISK :-)
 
 ### Workflow (after workspace init)
 
-1. Run `bin/tspico8.js run`.
-2. Modify `p8workspace/main.ts` and PICO-8 will restart upon every file save.
-3. Modify `p8workspace/spritesheet.png` and PICO-8 will restart upon every file save.
+1. Run `bin/tspico8.js run -d mycart (or whatever dir you prefer)`.
+2. Modify `mycart/main.ts` and PICO-8 will restart upon every file save.
+3. Modify `mycart/spritesheet.png` and PICO-8 will restart upon every file save.
 4. Spritesheet colors should be limited to the PICO-8 color palette.
 5. If you want to use the PICO-8 sprite editor, you'll need to dump its sprite sheet after
 making changes (`export spritesheet.png` from inside of PICO-8).
 6. Any other changes made inside of PICO-8 should be saved back to the cart `game.p8` before
-recompiling, or they will be overwritten.
+recompiling, or they will be overwritten after each build.
 7. If you want to use multiple TypeScript files, [read this first](https://github.com/scambier/tic80-typescript/issues/9).
 
 ### Commands
 
     # builds bin/tspico8.js from typescript
-    npm run build-bin
+    $ npm run build-bin
     # creates project skeleton inside of p8build
-    bin/tspico8.js init
+    $ bin/tspico8.js init
     # watches for changes and reloads PICO-8 on recompile
-    bin/tspico8.js run
+    $ bin/tspico8.js run
+    # formats TypeScript code (run before submitting PR)
+    $ npm run prettier-format
 
 ### Spritesheet hack (requires seperate Imagemagick install)
     # Use imagemagick to remap a 128x128 spritesheet to the PICO-8 color map (included in repo)
