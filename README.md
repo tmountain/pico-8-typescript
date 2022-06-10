@@ -31,9 +31,9 @@ using a typed language with PICO-8.
 
 ### Create a PICO-8 project
 
-1. Run `bin/tspico8 init` to generate the default workspace `p8workspace`.
+1. Run `bin/tspico8.js init` to generate the default workspace `p8workspace`.
 2. Optionally configure `p8workspace/tspico8.json` to specify compression, mangling, and pico-8 location. Note: tspico8 will attempt to detect the pico-8 location automatically.
-3. Run `bin/tspico8 run` to watch for changes inside of `p8workspace` and recompile/relaunch when detected.
+3. Run `bin/tspico8.js run` to watch for changes inside of `p8workspace` and recompile/relaunch when detected.
 
 ### Configuration (tspico8.json)
 
@@ -92,7 +92,7 @@ USE THEM AT YOUR OWN RISK :-)
 
 ### Workflow (after workspace init)
 
-1. Run `bin/tspico8 run`.
+1. Run `bin/tspico8.js run`.
 2. Modify `p8workspace/main.ts` and PICO-8 will restart upon every file save.
 3. Modify `p8workspace/spritesheet.png` and PICO-8 will restart upon every file save.
 4. Spritesheet colors should be limited to the PICO-8 color palette.
@@ -104,12 +104,12 @@ recompiling, or they will be overwritten.
 
 ### Commands
 
-    # builds bin/tspico8 from typescript
+    # builds bin/tspico8.js from typescript
     npm run build-bin
     # creates project skeleton inside of p8build
-    bin/tspico8 init
+    bin/tspico8.js init
     # watches for changes and reloads PICO-8 on recompile
-    bin/tspico8 run
+    bin/tspico8.js run
 
 ### Spritesheet hack (requires seperate Imagemagick install)
     # Use imagemagick to remap a 128x128 spritesheet to the PICO-8 color map (included in repo)

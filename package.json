@@ -7,7 +7,7 @@
   },
   "scripts": {
     "postinstall": "patch-package",
-    "build-bin": "tsc --outDir bin src/tspico8.ts",
+    "build-bin": "tsc --outDir bin src/tspico8.ts && chmod +x bin/tspico8.js",
     "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write"
   },
   "keywords": [
