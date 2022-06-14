@@ -6,7 +6,6 @@
     "tspico8": "./bin/tspico8.js"
   },
   "scripts": {
-    "postinstall": "patch-package",
     "build-bin": "tsc --outDir bin src/tspico8.ts && chmod +x bin/tspico8.js",
     "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write"
   },
@@ -24,8 +23,7 @@
     "chokidar": "^3.5.3",
     "commander": "^9.3.0",
     "fs-extra": "^10.1.0",
-    "jspicl-cli": "^0.4.0",
-    "patch-package": "^6.4.7",
+    "@quentin_widlocher/jspicl-cli": "^0.5.1",
     "strip-json-comments": "^4.0.0",
     "typescript": "^4.7.3",
     "uglify-js": "^3.16.0",
