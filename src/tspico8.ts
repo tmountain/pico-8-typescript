@@ -112,7 +112,7 @@ function init(workDir: string): void {
     });
 
     console.log(
-      `\nCopying complete. Edit the ${workDir}/tspico8.json, then type "bin/tspico8 run."`,
+      `\nCopying complete. Edit the ${workDir}/tspico8.json, then type "bin/tspico8 run -d ${workDir}."`,
     );
     process.exit(0);
   });
