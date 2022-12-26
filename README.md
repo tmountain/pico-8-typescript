@@ -115,7 +115,7 @@ recompiling, or they will be overwritten after each build.
 
 ### Spritesheet hack (requires seperate Imagemagick install)
     # Use imagemagick to remap a 128x128 spritesheet to the PICO-8 color map (included in repo)
-    $ convert newsheet.png -dither none -remap pico-8-8x.png spritesheet.png
+    $ convert spritesheet.png -dither none -remap pico-8-8x.png newsheet.png
 
 ### Credits
 
