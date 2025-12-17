@@ -24,10 +24,9 @@ using a typed language with PICO-8.
 ### Prerequisites
 
 1. Install a recent version of PICO-8
-2. Install a recent version of NodeJS
+2. Install a recent version of NodeJS (v18 or later recommended)
 3. Clone this repository to your local machine
 4. Install dependencies `npm install`
-5. Make sure "$PWD/node_modules/.bin/" is in your $PATH.
 
 ### Create a PICO-8 project
 
@@ -104,14 +103,16 @@ recompiling, or they will be overwritten after each build.
 
 ### Commands
 
-    # creates project skeleton inside of p8build
-    $ npm run init
+    # creates project skeleton inside of specified directory
+    $ npm run init mycart
     # alternatively
-    $ npx tsx src/tspico8 init
+    $ npx tsx src/tspico8.ts init -d mycart
+    
     # watches for changes and reloads PICO-8 on recompile
-    $ npm run start
+    $ npm run start mycart
     # alternatively
-    $ npx tsx src/tspico8 run
+    $ npx tsx src/tspico8.ts run -d mycart
+    
     # formats TypeScript code (run before submitting PR)
     $ npm run prettier-format
 
