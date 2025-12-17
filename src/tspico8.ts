@@ -124,7 +124,7 @@ function init(workDir: string): void {
     });
 
     console.log(
-      `\nCopying complete. Edit the ${workDir}/tspico8.json, then type "bin/tspico8 run -d ${workDir}."`,
+      `\nCopying complete. Edit the ${workDir}/tspico8.json, then type "npm run start ${workDir}" or "npx tsx src/tspico8.ts run -d ${workDir}".`,
     );
     process.exit(0);
   });
@@ -236,14 +236,19 @@ function compileCart(
   );
 
   spawnSync(
-    "npx jspicl-cli",
+    "npx",
     [
-      `--input ${jsFile}`,
-      `--output ${newGameFile}`,
-      `--spritesheetImagePath ${spriteFile}`,
-      `--cartridgePath ${refGameFile}`,
+      "jspicl-cli",
+      "--input",
+      jsFile,
+      "--output",
+      newGameFile,
+      "--spritesheetImagePath",
+      spriteFile,
+      "--cartridgePath",
+      refGameFile,
     ],
-    { shell: true },
+    { shell: false },
   );
 }
 
@@ -294,7 +299,7 @@ function build(workDir: string): void {
     .watch(".", {
       ignored: (file, stats) =>
         (stats?.isFile() || false) &&
-        !file.endsWith("ts") &&
+        !file.endsWith(".ts") &&
         !file.endsWith("spritesheet.png"),
       cwd: workDir,
     })
